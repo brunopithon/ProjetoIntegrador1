@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Livewire\ProductComponent;
+use App\Livewire\TableComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,16 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/products', ProductComponent::class)->name('products');
+
+
+Route::get('/table', function () {
+    return view('table');
+})->middleware(['auth', 'verified'])->name('table');
+
+Route::get('/tables', TableComponent::class)->name('tables');
+
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
