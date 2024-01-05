@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Livewire\ProductComponent;
 use App\Livewire\TableComponent;
+use App\Livewire\OrderComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware(['auth', 'verified'])->name('welcome');;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,6 +34,13 @@ Route::get('/table', function () {
 })->middleware(['auth', 'verified'])->name('table');
 
 Route::get('/tables', TableComponent::class)->name('tables');
+
+
+Route::get('/order', function () {
+    return view('order');
+})->middleware(['auth', 'verified'])->name('order');
+
+Route::get('/orders', OrderComponent::class)->name('orders');
 
 
 
